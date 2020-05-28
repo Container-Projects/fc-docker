@@ -18,7 +18,7 @@ COPY commons/debian-jessie-sources.list /etc/apt/sources.list
 WORKDIR ${FC_FUNC_CODE_PATH}
 
 # Install dev dependencies.
-RUN pip install coverage
+RUN pip install --no-cache-dir coverage
 
 # Install common libraries
 # imagemagick=8:6.9.7.4+dfsg-11+deb9u3 already installed
@@ -35,11 +35,11 @@ RUN apt-get update \
 RUN ln /dev/null /dev/raw1394
 
 # Install third party libraries for user function.
-RUN pip install -U six
-RUN pip install -U pip && pip install -U setuptools
+RUN pip install --no-cache-dir -U six
+RUN pip install --no-cache-dir -U pip && pip install --no-cache-dir -U setuptools
 
 # fc-docker fix: cprotobuf 0.1.10, dependency of pydatahub, could not be installed, so using 0.1.9
-RUN pip install \
+RUN pip install --no-cache-dir \
     numpy==1.13.3 \
     scipy==1.0.0.0 \
     wand==0.4.4 \

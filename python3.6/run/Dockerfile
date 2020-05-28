@@ -3,8 +3,8 @@ FROM aliyunfc/runtime-python3.6:${TAG}
 
 ENV PYTHONUNBUFFERED=1
 
-RUN pip install ptvsd
-RUN pip install pydevd
+RUN pip install --no-cache-dir ptvsd
+RUN pip install --no-cache-dir pydevd
 
 RUN rm -rf /var/runtime /var/lang && \
   curl https://my-fc-testt.oss-cn-shanghai.aliyuncs.com/python3.6.tgz | tar -zx -C / && \
